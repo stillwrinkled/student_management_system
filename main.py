@@ -182,6 +182,10 @@ class DeleteDialog(QDialog):
         self.close()
 
         confirmation_widget = QMessageBox()
+        confirmation_widget.setWindowTitle("Success")
+        confirmation_widget.setText("The record was deleted successfully")
+        confirmation_widget.exec()
+
 
 
 class SearchDialog(QDialog):
