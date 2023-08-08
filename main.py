@@ -30,6 +30,7 @@ class MainWindow(QMainWindow):
         about_action = QAction("About", self)
         help_menu_item.addAction(about_action)
         about_action.setMenuRole(QAction.MenuRole.NoRole)  # this mac specific line of code to create &Help menu
+        about_action.triggered.connect(self.about)
 
         self.table = QTableWidget()
         self.table.setColumnCount(4)
@@ -92,6 +93,20 @@ class MainWindow(QMainWindow):
     def delete(self):
         dialog = DeleteDialog()
         dialog.exec()
+
+    def about(self):
+        dialog = AboutDialog()
+        dialog.exec()
+
+class AboutDialog(QMessageBox):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("About")
+        content = """
+        This app is created in Python using PyQT6. Objective is to brush-up PyQT6 and OOPs concepts. Feel free to modify.
+        """
+        self.setText(content)
+
 
 
 class EditDialog(QDialog):
